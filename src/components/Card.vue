@@ -12,31 +12,19 @@
           <img class="card-img-top" :src="food.img" alt="Image not Available" />
           <div class="card-body">
             <h5 class="card-title">{{ food.name }}</h5>
-            <p class="card-text">{{ `Price: PHP ${food.price.toFixed(2)} ` }}</p>
-            <router-link
-              class="btn btn-primary btn-sm"
-              :to="{
-                name: 'Info',
-                params: { pathname: food.name },
-                query: {
-                  id: food.id,
-                  name: food.name,
-                  price: food.price,
-                  qty: food.quantity,
-                  category: food.category.join(', '),
-                  desc: food.desc,
-                  image: food.img,
-                },
-              }"
-            >
+            <p class="card-text">
+              {{ `Price: PHP ${food.price.toFixed(2)} ` }}
+            </p>
+            <button @click="goToDetails(food.name, food.id, food.price, food.quantity, food.category.join(', '), food.desc, food.img)" class="btn btn-primary btn-sm">
               Details
-            </router-link>
+            </button>
           </div>
         </div>
       </div>
     </div>
     <div v-else>
-      <p class="message text-center text-muted">No items were found.</p> <br />
+      <p class="message text-center text-muted">No items were found.</p>
+      <br />
     </div>
   </div>
 </template>
@@ -46,6 +34,11 @@ export default {
   name: "Card",
   props: {
     foods: Array,
+  },
+  methods: {
+    goToDetails(name, id, price, quantity, category, desc, img) {
+      this.$router.push({ name: "Info", params: { pathname: name, name:name, id:id, price:price, quantity:quantity, category:category, desc:desc, img:img} });
+    },
   },
 };
 </script>
@@ -66,7 +59,7 @@ img {
 }
 
 .message {
-  font-size: 20px;  
+  font-size: 20px;
 }
 
 .container-fluid {

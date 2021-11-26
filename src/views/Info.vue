@@ -3,7 +3,7 @@
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
       <div class="col-10 col-sm-8 col-lg-6">
         <img
-          :src="$route.query.image"
+          :src="$route.params.img"
           class="
             d-block
             mx-lg-auto
@@ -18,23 +18,23 @@
       </div>
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold lh-1 mb-3">
-          {{ `${$route.query.name}` }}
+          {{ `${$route.params.name}` }}
         </h1>
         <p class="lead">
-          <b>{{ $route.query.desc }}</b>
+          <b>{{ $route.params.desc }}</b>
         </p>
         <p class="lead mb-4">
           <b> Price: </b>
           {{ ` PHP ${total.toFixed(2)}` }} <br />
-          <b> Category: </b>{{ $route.query.category }} <br /><b> Quantity: </b>
-          {{ $route.query.qty }}
+          <b> Category: </b>{{ $route.params.category }} <br /><b> Quantity: </b>
+          {{ $route.params.qty }}
         </p>
         <Quantity
           @update-qty="updateQty"
           @manual-input="manualInput"
           :quantity="qty"
           :max="max"
-          :price="parseInt($route.query.price)"
+          :price="parseInt($route.params.price)"
         />
         <div class="btn-add">
           <ButtonModal
@@ -76,8 +76,8 @@ export default {
   },
   created() {
     this.qty = 1;
-    this.max = parseInt(this.$route.query.qty);
-    this.total = parseInt(this.$route.query.price);
+    this.max = parseInt(this.$route.params.quantity);
+    this.total = parseInt(this.$route.params.price);
   },
   methods: {
     manualInput(manualQty) {
@@ -91,14 +91,14 @@ export default {
         this.isValidQty = false;
       } else {
         this.item = {
-          id: parseInt(this.$route.query.id),
-          name: this.$route.query.name,
-          img: this.$route.query.image,
+          id: parseInt(this.$route.params.id),
+          name: this.$route.params.name,
+          img: this.$route.params.img,
           quantity: parseInt(this.qty),
           max: this.max,
-          price: parseInt(this.$route.query.price),
-          category: this.$route.query.category,
-          desc: this.$route.query.desc,
+          price: parseInt(this.$route.params.price),
+          category: this.$route.params.category,
+          desc: this.$route.params.desc,
         };
         this.$emit("add-to-cart", this.item);
         this.isValidQty = true;
