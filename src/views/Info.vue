@@ -81,7 +81,6 @@ export default {
   methods: {
     manualInput(manualQty) {
       this.qty = manualQty;
-      console.log(this.qty);
     },
     updateQty(qty) {
       this.qty = qty;

@@ -45,7 +45,6 @@ export default {
   },
   methods: {
     manualInput(manualQty, id) {
-      this.qty = manualQty;
       this.$emit("update-qty", manualQty, id);
     },
     UpdateQty(qty, id) {
