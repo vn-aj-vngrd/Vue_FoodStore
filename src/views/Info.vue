@@ -13,8 +13,6 @@
             rounded
           "
           alt="Image is Unavailable"
-          width="700"
-          height="500"
           loading="lazy"
         />
       </div>
@@ -42,11 +40,7 @@
           <ButtonModal
             @add-to-cart="addToCart"
             btnName="Add to Cart"
-            :title="
-              isValidQty
-                ? 'Successful'
-                : 'Failed'
-            "
+            :title="isValidQty ? 'Successful' : 'Failed'"
             :text="
               isValidQty
                 ? 'Item is successfully added to the cart.'
