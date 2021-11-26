@@ -94,7 +94,7 @@ export default {
     },
     makeTransaction(userMoney) {
       if (this.totalPrice != 0 && userMoney >= this.totalPrice) {
-        // To remove data from Array but according to instructions, do nothing. :-/
+        /* To remove data from Array but according to instructions, do nothing. */
         // for (let i = 0; i < this.cartItems.length; i++) {
         //   for (let j = 0; j < this.foods.length; j++) {
         //     if (this.cartItems[i].id == this.foods[j].id) {
