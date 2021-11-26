@@ -2,7 +2,7 @@
   <button
     @click="$emit('add-to-cart')"
     type="submit"
-    class="btn btn-primary"
+    :class="btnClass"
     data-bs-toggle="modal"
     data-bs-target="#exampleModal"
   >
@@ -45,6 +45,7 @@ export default {
     text: String,
     title: String,
     btnName: String,
+    btnClass: String,
   },
   emits: ["add-to-cart"],
 };

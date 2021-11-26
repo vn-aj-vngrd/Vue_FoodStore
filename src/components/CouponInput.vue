@@ -9,7 +9,7 @@
       aria-label="Username"
       aria-describedby="basic-addon1"
     />
-    <input type="submit" class="btn btn-outline-success" value="Apply" />
+    <input type="submit" :class="btnClass" value="Apply" />
   </form>
 </template>
 
@@ -20,6 +20,9 @@ export default {
     return {
       code: "",
     };
+  },
+  props: {
+    btnClass: String,
   },
   methods: {
     onSubmit(e) {

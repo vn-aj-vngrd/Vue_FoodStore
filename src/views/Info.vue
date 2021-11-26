@@ -40,6 +40,7 @@
           <ButtonModal
             @add-to-cart="addToCart"
             btnName="Add to Cart"
+            btnClass="btn btn-primary"
             :title="isValidQty ? 'Successful' : 'Failed'"
             :text="
               isValidQty

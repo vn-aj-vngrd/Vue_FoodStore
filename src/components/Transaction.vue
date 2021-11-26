@@ -24,6 +24,7 @@
       </div>
       <ButtonModal
         btnName="Check Out"
+        :btnClass="totalPrice > 0? 'btn btn-primary': 'btn btn-primary disabled'"
         :title="isCheckOut == true? 'Successful Transaction': 'Invalid Transaction'"
         :text="
           isCheckOut == true
@@ -44,6 +45,7 @@ export default {
     ButtonModal,
   },
   props: {
+    totalPrice: Number,
     text: String,
     placeholder: String,
     changeMoney: Number,

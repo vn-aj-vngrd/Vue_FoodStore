@@ -16,7 +16,15 @@
               pb-0
             "
           >
-            <CouponInput @validate-coupon="validateCoupon" :coupons="coupons" />
+            <CouponInput
+              @validate-coupon="validateCoupon"
+              :coupons="coupons"
+              :btnClass="
+                totalPrice > 0
+                  ? 'btn btn-outline-success'
+                  : 'btn btn-outline-success disabled'
+              "
+            />
           </li>
           <li
             class="
@@ -64,6 +72,7 @@
           @make-transaction="makeTransaction"
           text="Check Out"
           validateCoupon
+          :totalPrice="totalPrice"
           :changeMoney="changeMoney"
           :isCheckOut="isCheckOut"
         />
