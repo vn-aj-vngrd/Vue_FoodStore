@@ -72,16 +72,11 @@ export default {
     addToCart(item) {
       this.push = true;
       if (this.cartItems.length > -1) {
-        const indexCart = this.cartItems.findIndex(
-          (elem) => elem.id == item.id
-        );
+        const indexCart = this.cartItems.findIndex((elem) => elem.id == item.id);
         const indexFood = this.foods.findIndex((elem) => elem.id == item.id);
-        if (indexCart > -1) {
+        if (indexCart > -1 && indexFood > -1) {
           const updateQty = this.cartItems[indexCart].quantity + item.quantity;
-          if (
-            this.foods[indexFood].quantity >=
-            this.cartItems[indexCart].quantity + item.quantity
-          ) {
+          if ( this.foods[indexFood].quantity >= (this.cartItems[indexCart].quantity + item.quantity) ) {
             this.cartItems[indexCart].quantity = updateQty;
           }
           this.push = false;
@@ -90,7 +85,7 @@ export default {
       if (this.push == true) {
         this.cartItems.push(item);
       }
-      this.totalPrice += item.quantity * item.price;
+      this.updateTotalPrice();
     },
     makeTransaction(userMoney) {
       if (this.totalPrice != 0 && userMoney >= this.totalPrice) {
@@ -195,4 +190,3 @@ export default {
   },
 };
 </script>
-
