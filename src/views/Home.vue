@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <SearchBar @search="toggleSearch" />
-    <Card :foods="showFiltered ? filteredFood : foods" />
+    <Card :foods="showFiltered? filteredFood : foods" />
   </div>
 </template>
 
