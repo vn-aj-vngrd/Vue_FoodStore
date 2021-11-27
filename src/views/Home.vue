@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       filteredFood: [],
-      showFiltered: Boolean,
+      showFiltered: false,
     };
   },
   methods: {
@@ -33,9 +33,6 @@ export default {
         this.showFiltered = true;
       }
     },
-  },
-  created() {
-    this.showFiltered = false;
   },
 };
 </script>
