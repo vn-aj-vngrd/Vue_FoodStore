@@ -1,7 +1,10 @@
 <template>
   <div class="container">
     <SearchBar @search="toggleSearch" />
-    <Card :foods="showFiltered? filteredFood : foods" />
+    <Card
+      @show-items="showItems"
+      :foods="showFiltered ? filteredFood : foods"
+    />
   </div>
 </template>
 
@@ -32,6 +35,9 @@ export default {
         );
         this.showFiltered = true;
       }
+    },
+    showItems() {
+      this.showFiltered = false;
     },
   },
 };

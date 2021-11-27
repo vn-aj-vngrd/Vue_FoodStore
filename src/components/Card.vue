@@ -38,15 +38,27 @@
       </div>
     </div>
     <div v-else>
-      <p class="message text-center text-muted">No items were found.</p>
+      <div class="text-center">
+        <p class="message text-muted">No items were found.</p>
+        <Button
+          @on-click="showItems"
+          btnTitle="View All Items"
+          btnStyle="btn btn-secondary btn-sm"
+        />
+      </div>
       <br />
     </div>
   </div>
 </template>
 
 <script>
+import Button from "./Button.vue";
+
 export default {
   name: "Card",
+  components: {
+    Button,
+  },
   props: {
     foods: Array,
   },
@@ -55,6 +67,9 @@ export default {
     // goToDetails(name, id, price, quantity, category, desc, img) {
     //   this.$router.push({ name: "Info", params: { pathname: name, name:name, id:id, price:price, quantity:quantity, category:category, desc:desc, img:img} });
     // },
+    showItems() {
+      this.$emit("show-items");
+    },
   },
 };
 </script>
