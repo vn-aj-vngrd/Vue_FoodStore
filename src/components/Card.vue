@@ -15,9 +15,24 @@
             <p class="card-text">
               {{ `Price: PHP ${food.price.toFixed(2)} ` }}
             </p>
-            <button @click="goToDetails(food.name, food.id, food.price, food.quantity, food.category.join(', '), food.desc, food.img)" class="btn btn-primary btn-sm">
+            <router-link
+              :to="{
+                name: 'Info',
+                params: { pathname: food.name },
+                query: {
+                  name: food.name,
+                  id: food.id,
+                  price: food.price,
+                  quantity: food.quantity,
+                  category: food.category.join(', '),
+                  desc: food.desc,
+                  img: food.img,
+                },
+              }"
+              class="btn btn-primary btn-sm"
+            >
               Details
-            </button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -36,9 +51,10 @@ export default {
     foods: Array,
   },
   methods: {
-    goToDetails(name, id, price, quantity, category, desc, img) {
-      this.$router.push({ name: "Info", params: { pathname: name, name:name, id:id, price:price, quantity:quantity, category:category, desc:desc, img:img} });
-    },
+    // Anther Method to pass data through router-link
+    // goToDetails(name, id, price, quantity, category, desc, img) {
+    //   this.$router.push({ name: "Info", params: { pathname: name, name:name, id:id, price:price, quantity:quantity, category:category, desc:desc, img:img} });
+    // },
   },
 };
 </script>
